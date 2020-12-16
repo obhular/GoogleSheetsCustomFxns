@@ -1,0 +1,41 @@
+/**
+* Check When Array was last Edited
+*
+* @param array Select the Array you want to check to see when it is updated
+* @param timestampCell Select the Cell you want to put the timestamp for when array updated
+* @customfunction
+*/
+
+function LASTEDIT(array,timestampCell) {
+  
+  PropertiesService.getScriptProperties().setProperty('array', array);
+  PropertiesService.getScriptProperties().setProperty('timestampCell', timestampCell);
+  
+  var greeting = "Check " + timestampCell + " for updated timestamp";
+  return greeting;
+  
+}
+
+
+function onEdit(e){
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var editRange = sheet.getActiveRange();
+  var editRow = editRange.getRow();
+  var editCol = editRange.getColumn();
+  var leArr = PropertiesService.getScriptProperties().getProperty('array');
+  var range = sheet.getRange(leArr);
+  var rangeRowStart = range.getRow();
+  var rangeRowEnd = rangeRowStart + range.getHeight();
+  var rangeColStart = range.getColumn();
+  var rangeColEnd = rangeColStart + range.getWidth();
+  
+  if (editRow >= rangeRowStart && editRow <= rangeRowEnd 
+      && editCol >= rangeColStart && editCol <= rangeColEnd)
+  {
+    var date = PropertiesService.getScriptProperties().setProperty('lastEdit', new Date());
+    var lastEdit = PropertiesService.getScriptProperties().getProperty('lastEdit');
+    var tsCell = PropertiesService.getScriptProperties().getProperty('timestampCell');
+    sheet.getRange(tsCell).setValue(lastEdit)
+  }
+}
+
