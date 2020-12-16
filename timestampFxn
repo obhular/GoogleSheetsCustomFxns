@@ -1,8 +1,8 @@
 /**
 * Check When Array was last Edited
 *
-* @param array Select the Array you want to check to see when it is updated
-* @param timestampCell Select the Cell you want to put the timestamp for when array updated
+* @param array Select the Array you want to check to see when it is updated i.e "A5:B5"
+* @param timestampCell Select the Cell you want to put the timestamp for when array updated i.e "A1"
 * @customfunction
 */
 
