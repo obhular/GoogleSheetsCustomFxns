@@ -1,0 +1,68 @@
+/**
+* Repeat Values Formula
+*
+* @param array value to repeat eg. 1,2,3,4
+* @param amount number of times eg. 2 = 1,1,2,2,3,3,4,4
+* @customfunction
+*/
+
+
+function VALUEREPEAT(array,amount) {
+ var value = [];
+  
+  for (var i = 0; Math.floor(i/amount) < array.length; i++){
+    
+    value.push(array[Math.floor(i/amount)]);
+     
+  }
+  return value;
+
+}
+
+ARRAYMULT(array,amount)
+
+Multiply an Array so it repeats n number of times 
+
+I.e.
+
+{1,2,3,4} => {1,2,3,4,1,2,3,4,1,2,3,4}	/**
+* Multiply Array
+*
+* @param array Value to repeat eg. 1,2,3,4
+* @param amount number of times eg. 2 = 1,2,3,4,1,2,3,4
+* @customfunction
+*/
+
+function ARRAYMULT(array,amount) { 
+
+  var result = Array.from({ length: amount * array.length }, (_, i) => array[i % array.length]);
+
+  return result;
+  
+  }
+
+/**
+* Gantt Chart Creator
+*
+* @param startDate Start Date
+* @param endDate End Date
+* @param weekEndDate Timeline Date Directly above
+* @param textReturn Text you want to return eg. "Text"
+* @customfunction
+*/
+
+function GANTTMAKER(startDate,endDate,weekEndDate,textReturn) {
+  if(weekEndDate-7 > startDate && endDate >= weekEndDate-7){
+    if(textReturn == null || textReturn == ''){
+      return null;
+    }else{
+      
+      return textReturn;
+    }
+  } else {
+  
+    return null; 
+   
+  }
+    
+}
